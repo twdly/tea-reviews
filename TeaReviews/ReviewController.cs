@@ -17,7 +17,7 @@ public class ReviewController
     [HttpPost]
     public void PostReview([FromBody] ReviewModel review)
     {
-        review.Id = reviews.Max(x => x.Id) + 1;
+        review.Id = reviews.Count != 0 ? reviews.Max(x => x.Id) + 1 : 0;
         reviews.Add(review);
     }
 }
